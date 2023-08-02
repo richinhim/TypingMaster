@@ -13,3 +13,6 @@ https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
 Math.random();
 
+2-8.데이터와 상태 처리 
+
+
