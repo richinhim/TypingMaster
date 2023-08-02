@@ -16,3 +16,11 @@ Math.random();
 2-8.데이터와 상태 처리 
 
 
+2-9.API연동
+
+https://random-word-api.herokuapp.com/home
+https://random-word-api.herokuapp.com/word?number=10
+
+
+// async function(비동기 함수)
+// :callback과 promise의 단점을 보완하기 위해 추가됨

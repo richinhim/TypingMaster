@@ -8,6 +8,8 @@ const messageDisplay = document.querySelector("#message");
 
 const GAME_TIME = 5;
 
+const API_URL = "https://random-word-api.herokuapp.com/word?number=100";
+
 let words = [
   "banana",
   "key",
@@ -32,11 +34,45 @@ let words = [
   "dog",
   "cat",
 ];
+
 let score = 0;
 let time = 0;
 
 let timeInterval;
 let isPlaying = false;
+let isReady = false;
+
+init();
+
+// async await
+/* 
+function init() {
+  const res = fetch(API_URL)
+    .then((res) =>
+      //console.log(res); //promise
+      res.json()
+    )
+    .then(
+      (data) =>
+        //console.log(data)
+        (words = data)
+    );
+} */
+
+// async function(비동기 함수)
+// :callback과 promise의 단점을 보완하기 위해 추가됨
+
+async function init() {
+  const res = await fetch(API_URL);
+  const data = await res.json();
+
+  words = data.filter((item) => item.length < 7);
+  //let tempData = data.filter((item) => item.length < 7);
+  isReady = true;
+  // words = data;
+  console.log(words);
+  //console.log(data);
+}
 
 //time = GAME_TIME;
 
@@ -53,7 +89,7 @@ wordInput.addEventListener("input", (e) => {
   const currentText = currentWord.innerText;
 
   console.log(typedText == currentText, typedText, currentText);
-  if (typedText.toUpperCase() == currentText.toUpperCase()) {
+  if (typedText.toUpperCase() == currentText.toUpperCase() && isReady) {
     //console.log("같습니다.!!!");
     addScore();
     setNewWord();
