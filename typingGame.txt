@@ -9,3 +9,7 @@ https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
 2-6.HTML 코딩
 
+2-7.이벤트 핸들링
+
+Math.random();
+
